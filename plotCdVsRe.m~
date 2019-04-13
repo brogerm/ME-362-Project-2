@@ -23,7 +23,7 @@ Cd_cup_actual = 1.42;
 % Don't plot first Cd since velocity is zero at that point
 
 % disk
-figure1 = figure(1);
+fig
 axes1 = axes('Parent',figure1);
 hold(axes1,'on');
 errorbar(Re(2:end), Cd_disk(2:end), u_Cd, '--ob', 'MarkerFaceColor', 'b')
@@ -33,18 +33,15 @@ ylabel('Cd', 'FontSize', 12)
 legend({'Measured Cd', 'Actual Cd'})
 grid(axes1,'on');
 set(axes1,'FontSize',12);
-set(legend,'FontSize',12);
+set(legend1,'FontSize',12);
 
 % cup
-figure2 = figure(2);
-axes2 = axes('Parent',figure2);
-hold(axes2,'on');
+figure(2)
+hold on
 errorbar(Re(2:end), Cd_cup(2:end), u_Cd, '--ob', 'MarkerFaceColor', 'b')
 plot([0, 3 * 10^5], [Cd_cup_actual, Cd_cup_actual], '-k')
 xlabel('Re', 'FontSize', 12)
 ylabel('Cd', 'FontSize', 12)
 ylim([0,9])
 legend({'Measured Cd', 'Actual Cd'})
-grid(axes2,'on');
-set(axes2,'FontSize',12);
-set(legend,'FontSize',12);
+grid on
