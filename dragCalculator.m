@@ -1,8 +1,8 @@
-function [drag, y] = dragCalculator(pixelLocations, vel)
+function [drag, y, p] = dragCalculator(pixelLocations, vel)
 
 % load calibration data
-load 'p.mat' % this is the calibration line fit
-load 'pixelToLengthRatio.mat'
+load 'savedVariables/p.mat' % this is the calibration line fit
+load 'savedVariables/pixelToLengthRatio.mat'
 
 % calculate deflection at each windspeed
 deflection = []; % this is in mm
@@ -12,7 +12,7 @@ end
 
 % calculate force for each deflection
 % deflection = p(1) * force + p(2)
-drag = (deflection - p(2))/p(1) * 0.28; % this is in lbs
+drag = (deflection - p(2))/p(1);
 
 % create 2nd order best fit line
 p2 = polyfit(vel, drag, 2);
